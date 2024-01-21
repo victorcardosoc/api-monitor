@@ -1,11 +1,13 @@
-import styles from './Header.module.css'
+import {HeaderContainer, HeaderTitle, HeaderConfigIcon} from './Header.styles'
 import {  GearSix } from 'phosphor-react'
 
 export function Header(){
     return(
-        <div className={styles.headerContainer}>
-            <h1 className={styles.title}>Monitoramento</h1>
-            <GearSix size={20} className={styles.configIcon} />
-        </div>
+        <HeaderContainer>
+            <HeaderTitle>Monitoramento</HeaderTitle>
+            <HeaderConfigIcon>
+            <GearSix size={20} />
+            </HeaderConfigIcon>
+        </HeaderContainer>
     )
 }
