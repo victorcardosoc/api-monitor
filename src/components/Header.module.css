@@ -1,0 +1,23 @@
+.title {
+    font-size: 1.625rem;
+    color: var(--white);
+}
+
+.headerContainer {
+    background: #292929;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.configIcon {
+    margin-left: auto;
+    border-radius: 4px;
+    color: white;
+    transition: 0.2s;
+}
+
+.configIcon:hover {
+    background-color: var(--light-gray);
+    cursor: pointer;
+}
