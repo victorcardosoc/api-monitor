@@ -5,9 +5,9 @@ interface statusProps {
 }
 
 const statusStyle = {
-  offline: '#D64949',
+  offline: '#FFDC00',
   active: '#00D015',
-  banned: '#FFDC00',
+  banned: '#D64949',
 }
 
 export const CardContainer = styled.div<statusProps>`

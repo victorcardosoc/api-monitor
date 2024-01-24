@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const CardContainer = styled.div`
   padding: 1rem;
-  border: 2px solid ${(props) => props.theme['--dark-yellow']};
+  border: 2px solid ${(props) => props.theme['--dark-red']};
   border-radius: 8px;
   margin-top: 1rem;
   margin-left: 1rem;
@@ -25,6 +25,6 @@ export const IconDiv = styled.div`
   cursor: pointer;
 
   &:hover {
-    color: ${(props) => props.theme['--light-yellow']};
+    color: ${(props) => props.theme['--light-red']};
   }
 `

@@ -61,4 +61,12 @@ export const UpdateIcon = styled.div`
     background: #b8b8b8;
     color: black;
   }
+
+  > svg {
+    transition: transform 1s;
+  }
+
+  &:hover > svg {
+    transform: rotate(360deg);
+  }
 `

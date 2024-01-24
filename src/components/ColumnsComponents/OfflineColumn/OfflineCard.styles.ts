@@ -2,8 +2,8 @@ import styled from 'styled-components'
 
 export const CardContainer = styled.div`
   padding: 1rem;
-  background-color: ${(props) => props.theme['--light-red']};
-  border: 2px solid ${(props) => props.theme['--light-red']};
+  background-color: ${(props) => props.theme['--light-yellow']};
+  border: 2px solid ${(props) => props.theme['--light-yellow']};
   color: black;
   border-radius: 8px;
   margin-top: 1rem;
@@ -27,6 +27,6 @@ export const IconDiv = styled.div`
   cursor: pointer;
 
   &:hover {
-    color: white;
+    color: gray;
   }
 `
