@@ -4,7 +4,7 @@ export const CardContainer = styled.div`
   padding: 1rem;
   border: 2px solid ${(props) => props.theme['--dark-green']};
   border-radius: 8px;
-  margin-top: 1.25rem;
+  margin-top: 1rem;
   margin-left: 1rem;
   margin-right: 1rem;
 

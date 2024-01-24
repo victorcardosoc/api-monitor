@@ -54,6 +54,7 @@ export const UpdateIcon = styled.div`
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  transition: 0.2s;
 
   &:hover {
     outline: 1px solid b8b8b8;

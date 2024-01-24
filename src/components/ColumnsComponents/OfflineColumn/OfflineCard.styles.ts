@@ -6,7 +6,7 @@ export const CardContainer = styled.div`
   border: 2px solid ${(props) => props.theme['--light-red']};
   color: black;
   border-radius: 8px;
-  margin-top: 1.25rem;
+  margin-top: 1rem;
   margin-left: 1rem;
   margin-right: 1rem;
 
