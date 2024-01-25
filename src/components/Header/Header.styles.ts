@@ -13,20 +13,6 @@ export const HeaderTitle = styled.h1`
   color: ${(props) => props.theme['--text-color']};
 `
 
-export const HeaderConfigIcon = styled.i`
-  border-radius: 4px;
-  color: ${(props) => props.theme['text-color']};
-  transition: 0.2s;
-  height: 20px;
-  width: 20px;
-  margin-right: 0.2rem;
-
-  &:hover {
-    background-color: ${(props) => props.theme['--main-background']};
-    cursor: pointer;
-  }
-`
-
 export const FunctionsContainer = styled.div`
   display: flex;
   gap: 1rem;

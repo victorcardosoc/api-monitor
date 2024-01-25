@@ -1,7 +1,6 @@
 import {
   HeaderContainer,
   HeaderTitle,
-  HeaderConfigIcon,
   FunctionsContainer,
   UpdateAllContainer,
   UpdateIcon,
@@ -11,6 +10,7 @@ import { GearSix, ArrowsClockwise } from 'phosphor-react'
 import { useContext, useEffect, useState } from 'react'
 import { ActiveListContext } from '../../contexts/activeListContext'
 import { AlarmListContext } from '../../contexts/alarmListContext'
+import { HeaderMenuDialog } from '../HeaderMenu/HeaderMenu'
 
 export function Header() {
   const { getActiveList, activeList } = useContext(ActiveListContext)
@@ -61,9 +61,7 @@ export function Header() {
             <ArrowsClockwise size={20} />
           </UpdateIcon>
         </UpdateAllContainer>
-        <HeaderConfigIcon>
-          <GearSix size={20} />
-        </HeaderConfigIcon>
+        <HeaderMenuDialog />
       </FunctionsContainer>
     </HeaderContainer>
   )

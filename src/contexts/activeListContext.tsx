@@ -10,7 +10,7 @@ interface ActiveType {
 
 interface ActiveListContextType {
   activeList: ActiveType[]
-  getActiveList: () => object
+  getActiveList: () => void
 }
 
 interface ActiveListProviderProps {
