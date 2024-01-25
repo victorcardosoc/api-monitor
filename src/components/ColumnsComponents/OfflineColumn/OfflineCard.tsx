@@ -1,5 +1,10 @@
-import { List } from 'phosphor-react'
-import { CardContainer, FirstLine, IconDiv } from './OfflineCard.styles'
+import { List, PlusCircle } from 'phosphor-react'
+import {
+  CardContainer,
+  FirstLine,
+  IconDiv,
+  MonitorDiv,
+} from './OfflineCard.styles'
 
 interface OfflineType {
   offlineItem: {
@@ -36,10 +41,14 @@ export function OfflineCard({ offlineItem }: OfflineType) {
         <strong>Tempo Fora: </strong>
         {offlineItem.timeoff}
       </p>
-      <p>
+      <MonitorDiv>
         <strong>Monitorado por: </strong>
-        {offlineItem.monitorado}
-      </p>
+        {offlineItem.monitorado != null ? (
+          offlineItem.monitorado
+        ) : (
+          <PlusCircle size={20} />
+        )}
+      </MonitorDiv>
     </CardContainer>
   )
 }

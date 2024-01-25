@@ -33,3 +33,22 @@ export const IconDiv = styled.div`
     color: gray;
   }
 `
+
+export const MonitorDiv = styled.p`
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 0.375rem;
+
+  & > svg {
+    color: red;
+    transition: 0.2s;
+  }
+
+  & > svg:hover {
+    cursor: pointer;
+    ${(props) => {
+      return `color: ${props.theme['--light-red']}`
+    }};
+  }
+`
