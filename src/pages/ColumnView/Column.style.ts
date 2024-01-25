@@ -14,7 +14,7 @@ export const Column = styled.div`
 `
 
 export const CardListColumn = styled.div`
-  height: calc(100vh - 9.2rem);
+  height: calc(100vh - 10.2rem);
   overflow-y: scroll;
 
   &::-webkit-scrollbar {

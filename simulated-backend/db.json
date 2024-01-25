@@ -1,7 +1,7 @@
 {
     "listClientActive": [
       {
-        "clientename": "ACME Corp",
+        "clientename": "ACME Corp ",
         "clinica": null,
         "id": 987654,
         "numero": "1234567890",
@@ -177,7 +177,7 @@
         "date": "2024-01-22T22:00:00.000Z",
         "id": 65432109,
         "last_send_api": "2024-01-22 19:30:00",
-        "monitorado": "Eva Brown",
+        "monitorado": null,
         "number": "999888777",
         "provider": null,
         "qtde": 2,
@@ -225,7 +225,7 @@
         "date": "2024-01-22T19:00:00.000Z",
         "id": 21098765,
         "last_send_api": "2024-01-22 16:00:50",
-        "monitorado": "Sophia Johnson",
+        "monitorado": null,
         "number": "999888777",
         "provider": null,
         "qtde": 2,

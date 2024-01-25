@@ -15,6 +15,7 @@ export const CardContainer = styled.div<statusProps>`
   margin-left: 1rem;
   margin-right: 1rem;
   margin-top: 1.25rem;
+  margin-bottom: 1rem;
 
   ${(props) => {
     return `border:  2px solid  ${statusStyle[props.status]}`

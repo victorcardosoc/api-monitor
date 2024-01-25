@@ -25,6 +25,7 @@ export function ColumnView() {
           })}
         </CardListColumn>
       </Column>
+
       <Column>
         <CardListSize
           status="offline"
@@ -39,6 +40,7 @@ export function ColumnView() {
           })}
         </CardListColumn>
       </Column>
+
       <Column>
         <CardListSize
           status="banned"

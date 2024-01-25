@@ -6,9 +6,12 @@ export const CardContainer = styled.div`
   border: 2px solid ${(props) => props.theme['--light-yellow']};
   color: black;
   border-radius: 8px;
-  margin-top: 1rem;
   margin-left: 1rem;
   margin-right: 1rem;
+
+  &:not(:first-child) {
+    margin-top: 1rem;
+  }
 
   p {
     line-height: 1.6;

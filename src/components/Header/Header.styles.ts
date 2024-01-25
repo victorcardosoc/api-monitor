@@ -19,6 +19,7 @@ export const HeaderConfigIcon = styled.i`
   transition: 0.2s;
   height: 20px;
   width: 20px;
+  margin-right: 0.2rem;
 
   &:hover {
     background-color: ${(props) => props.theme['--main-background']};
@@ -28,7 +29,7 @@ export const HeaderConfigIcon = styled.i`
 
 export const FunctionsContainer = styled.div`
   display: flex;
-  gap: 1.5625rem;
+  gap: 1rem;
   align-items: center;
 `
 
