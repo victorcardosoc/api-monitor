@@ -22,7 +22,7 @@ export const DropdownContainer = styled(DropdownMenu.Content)`
   border: 1px solid grey;
 `
 
-export const DropdownItem = styled(DropdownMenu.Item)`
+export const DropdownItem = styled.div`
   padding: 0.625rem;
   display: flex;
   align-items: center;

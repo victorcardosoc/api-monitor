@@ -48,14 +48,14 @@ export const MonitorDiv = styled.p`
   gap: 0.375rem;
 
   & > svg {
-    color: red;
+    color: #002500;
     transition: 0.2s;
   }
 
   & > svg:hover {
     cursor: pointer;
     ${(props) => {
-      return `color: ${props.theme['--light-red']}`
+      return `color: ${props.theme['--dark-green']}`
     }};
   }
 `

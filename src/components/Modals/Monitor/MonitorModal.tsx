@@ -9,11 +9,11 @@ import {
   FieldLabel,
   Field,
   CloseAndSaveDialog,
-} from './MonitorModal.style'
+} from './MonitorModal.styles'
 import {useForm} from 'react-hook-form'
 import { useState } from 'react'
 
-interface FormDatType {
+interface FormDataType {
   monitorName: string
 }
 
@@ -36,14 +36,14 @@ interface OfflineType {
 
 export function MonitorModal({ offlineItem, updateItem }: OfflineType) {
 
-  const{ register, handleSubmit, reset } = useForm<FormDatType>({
+  const{ register, handleSubmit, reset } = useForm<FormDataType>({
     defaultValues: {
       monitorName: ''
     }
   });
   const [dialogOpen, setDialogOpen] = useState(false)
 
-  function updateMonitor(data: FormDatType){
+  function updateMonitor(data: FormDataType){
     offlineItem.monitorado = data.monitorName;
     updateItem({
       offlineItem: offlineItem,

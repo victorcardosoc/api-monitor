@@ -4,7 +4,7 @@ import {
   MonitorDiv,
   MonitorNameContainer
 } from './OfflineCard.styles'
-import { MonitorModal } from './Modals/MonitorModal'
+import { MonitorModal } from '../../Modals/Monitor/MonitorModal'
 import { DropdownMenuCard } from '../CardsDropdown/Dropdown'
 import { useContext } from 'react'
 import { AlarmListContext } from '../../../contexts/alarmListContext'
@@ -46,7 +46,7 @@ export function OfflineCard({ offlineItem }: OfflineType) {
           <strong>Número: </strong>
           {offlineItem.number}
         </p>
-        <DropdownMenuCard />
+        <DropdownMenuCard APINumber={offlineItem.number} APIClient={offlineItem.customer} listType={'alarms'} />
       </FirstLine>
       <p>
         <strong>Cliente: </strong>
