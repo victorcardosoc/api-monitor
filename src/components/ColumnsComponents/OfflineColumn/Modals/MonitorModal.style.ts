@@ -36,7 +36,7 @@ export const DialogClose = styled(Dialog.Close)`
   }
 `
 
-export const CloseAndSaveDialog = styled(Dialog.Close)`
+export const CloseAndSaveDialog = styled.button`
   margin-top: 1.5rem;
   background-color: transparent;
   border: 1px solid ${(props) => props.theme['--text-color']};

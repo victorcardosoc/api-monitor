@@ -1,13 +1,14 @@
-import { List } from 'phosphor-react'
 import {
   CardContainer,
   FirstLine,
-  IconDiv,
   MonitorDiv,
+  MonitorNameContainer
 } from './OfflineCard.styles'
-import * as Dialog from '@radix-ui/react-dialog'
 import { MonitorModal } from './Modals/MonitorModal'
 import { DropdownMenuCard } from '../CardsDropdown/Dropdown'
+import { useContext } from 'react'
+import { AlarmListContext } from '../../../contexts/alarmListContext'
+import { MinusCircle } from 'phosphor-react'
 
 interface OfflineType {
   offlineItem: {
@@ -17,7 +18,7 @@ interface OfflineType {
     id: number
     last_send_api: string
     monitorado?: string
-    number: string
+    number: string 
     provider: string
     qtde: number
     timeoff: number
@@ -25,6 +26,19 @@ interface OfflineType {
 }
 
 export function OfflineCard({ offlineItem }: OfflineType) {
+
+  const {updateAlarmList} = useContext(AlarmListContext)
+
+  function updateAPI(newValue: OfflineType){
+    updateAlarmList(newValue.offlineItem)
+  }
+
+  function deleteMonitorAndUpdate(){
+    offlineItem.monitorado = undefined,
+    updateAlarmList(offlineItem)
+  }
+
+
   return (
     <CardContainer>
       <FirstLine>
@@ -45,9 +59,9 @@ export function OfflineCard({ offlineItem }: OfflineType) {
       <MonitorDiv>
         <strong>Monitorado por: </strong>
         {offlineItem.monitorado != null ? (
-          offlineItem.monitorado
+         <MonitorNameContainer> {offlineItem.monitorado} <MinusCircle size={20} onClick={deleteMonitorAndUpdate} /></MonitorNameContainer>
         ) : (
-          <MonitorModal />
+          <MonitorModal  offlineItem={offlineItem} updateItem={updateAPI} />
         )}
       </MonitorDiv>
     </CardContainer>

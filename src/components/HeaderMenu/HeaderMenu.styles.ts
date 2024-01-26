@@ -33,6 +33,7 @@ export const DropdownItem = styled(DropdownMenu.Item)`
 
   &:hover {
     cursor: pointer;
+    opacity: 0.8;
   }
 
   &:not(:first-child) {
