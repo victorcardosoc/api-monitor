@@ -17,9 +17,9 @@ export const HeaderConfigIcon = styled.i`
 
 export const DropdownContainer = styled(DropdownMenu.Content)`
   background: ${(props) => props.theme['--secondary-background']};
-  margin: 0.815rem 1rem;
+  margin: 0.688rem 1rem;
   border-radius: 8px;
-  border: 2px solid grey;
+  border: 1px solid grey;
 `
 
 export const DropdownItem = styled(DropdownMenu.Item)`

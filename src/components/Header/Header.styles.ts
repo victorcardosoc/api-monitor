@@ -35,7 +35,7 @@ export const TimerDiv = styled.p`
 
 export const UpdateIcon = styled.div`
   padding: 0.2rem 1rem;
-  outline: 1px solid #b8b8b8;
+  outline: 1px solid #8a8a8a;
   border-radius: 7px;
   display: flex;
   justify-content: center;

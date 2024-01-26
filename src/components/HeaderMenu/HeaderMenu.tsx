@@ -20,6 +20,40 @@ export function HeaderMenuDialog() {
   const { actualTheme, changeTheme } = useContext(ActualThemeContext)
   const { actualShowMode, changeMode } = useContext(ActualShowModeContext)
 
+  function returnThemeModeItem() {
+    if (actualTheme === 'light') {
+      return (
+        <>
+          <MoonStars />
+          <p>Modo Escuro</p>
+        </>
+      )
+    } else {
+      return (
+        <>
+          <SunDim />
+          <p>Modo Claro</p>
+        </>
+      )
+    }
+  }
+
+  function returnViewTypeItem() {
+    if (actualShowMode === 'row') {
+      return (
+        <>
+          <Columns /> <p>Visualização em Colunas</p>
+        </>
+      )
+    } else {
+      return (
+        <>
+          <Rows /> <p>Visualização em Linhas</p>
+        </>
+      )
+    }
+  }
+
   return (
     <DropdownMenu.Root>
       <DropdownMenu.Trigger asChild>
@@ -30,31 +64,13 @@ export function HeaderMenuDialog() {
       <DropdownMenu.Portal>
         <DropdownContainer>
           <DropdownItem onClick={changeMode}>
-            {actualShowMode === 'row' ? (
-              <>
-                <Columns /> <p>Visualização em Colunas</p>
-              </>
-            ) : (
-              <>
-                <Rows /> <p>Visualização em Linhas</p>
-              </>
-            )}
+            {returnViewTypeItem()}
           </DropdownItem>
           <DropdownItem>
             <MagnifyingGlass /> <p>Filtrar Listas</p>
           </DropdownItem>
           <DropdownItem onClick={changeTheme}>
-            {actualTheme === 'light' ? (
-              <>
-                <MoonStars />
-                <p>Modo Escuro</p>
-              </>
-            ) : (
-              <>
-                <SunDim />
-                <p>Modo Claro</p>
-              </>
-            )}
+            {returnThemeModeItem()}
           </DropdownItem>
         </DropdownContainer>
       </DropdownMenu.Portal>
