@@ -1,10 +1,13 @@
-import { List, PlusCircle } from 'phosphor-react'
+import { List } from 'phosphor-react'
 import {
   CardContainer,
   FirstLine,
   IconDiv,
   MonitorDiv,
 } from './OfflineCard.styles'
+import * as Dialog from '@radix-ui/react-dialog'
+import { MonitorModal } from './Modals/MonitorModal'
+import { DropdownMenuCard } from '../CardsDropdown/Dropdown'
 
 interface OfflineType {
   offlineItem: {
@@ -29,9 +32,7 @@ export function OfflineCard({ offlineItem }: OfflineType) {
           <strong>Número: </strong>
           {offlineItem.number}
         </p>
-        <IconDiv>
-          <List size={20} />
-        </IconDiv>
+        <DropdownMenuCard />
       </FirstLine>
       <p>
         <strong>Cliente: </strong>
@@ -46,7 +47,7 @@ export function OfflineCard({ offlineItem }: OfflineType) {
         {offlineItem.monitorado != null ? (
           offlineItem.monitorado
         ) : (
-          <PlusCircle size={20} />
+          <MonitorModal />
         )}
       </MonitorDiv>
     </CardContainer>

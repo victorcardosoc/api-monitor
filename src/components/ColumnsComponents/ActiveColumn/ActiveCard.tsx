@@ -1,5 +1,5 @@
-import { List } from 'phosphor-react'
-import { CardContainer, FirstLine, IconDiv } from './ActiveCard.styles'
+import { CardContainer, FirstLine } from './ActiveCard.styles'
+import { DropdownMenuCard } from '../CardsDropdown/Dropdown'
 
 interface ActiveType {
   activeItem: {
@@ -19,9 +19,7 @@ export function ActiveCard({ activeItem }: ActiveType) {
           <strong>Número: </strong>
           {activeItem.numero}
         </p>
-        <IconDiv>
-          <List size={20} />
-        </IconDiv>
+        <DropdownMenuCard />
       </FirstLine>
       <p>
         <strong>Cliente: </strong>

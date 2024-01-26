@@ -23,17 +23,6 @@ export const FirstLine = styled.div`
   align-items: center;
 `
 
-export const IconDiv = styled.div`
-  color: black;
-
-  transition: color 0.2s;
-  cursor: pointer;
-
-  &:hover {
-    color: gray;
-  }
-`
-
 export const MonitorDiv = styled.p`
   display: flex;
   flex-wrap: nowrap;

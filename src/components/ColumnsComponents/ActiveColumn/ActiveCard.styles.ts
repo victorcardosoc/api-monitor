@@ -20,13 +20,3 @@ export const FirstLine = styled.div`
   justify-content: space-between;
   align-items: center;
 `
-
-export const IconDiv = styled.div`
-  color: white;
-  transition: color 0.2s;
-  cursor: pointer;
-
-  &:hover {
-    color: ${(props) => props.theme['--light-green']};
-  }
-`
