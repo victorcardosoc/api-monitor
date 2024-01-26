@@ -1,4 +1,4 @@
-import { ColumnContainer, Column, CardListColumn } from './Column.style'
+import { ListContainer, Column, CardListColumn } from './APIListView.style'
 import { ActiveCard } from '../../components/ColumnsComponents/ActiveColumn/ActiveCard'
 import { OfflineCard } from '../../components/ColumnsComponents/OfflineColumn/OfflineCard'
 import { BannedCard } from '../../components/ColumnsComponents/BannedColumn/BannedCard'
@@ -6,13 +6,15 @@ import { CardListSize } from '../../components/ColumnsComponents/CardListSize/Ca
 import { ActiveListContext } from '../../contexts/activeListContext'
 import { AlarmListContext } from '../../contexts/alarmListContext'
 import { useContext } from 'react'
+import { ActualShowModeContext } from '../../contexts/showListModeContext'
 
-export function ColumnView() {
+export function APIListView() {
   const { activeList } = useContext(ActiveListContext)
   const { alarmList } = useContext(AlarmListContext)
+  const { actualShowMode } = useContext(ActualShowModeContext)
 
   return (
-    <ColumnContainer>
+    <ListContainer display={actualShowMode === 'column' ? 'flex' : 'block'}>
       <Column>
         <CardListSize
           status="active"
@@ -53,6 +55,6 @@ export function ColumnView() {
           })}
         </CardListColumn>
       </Column>
-    </ColumnContainer>
+    </ListContainer>
   )
 }

@@ -1,15 +1,16 @@
 import { Routes, Route } from 'react-router-dom'
-import { ColumnView } from './pages/ColumnView/ColumnView'
-import { RowView } from './pages/RowView/RowView'
 import { DefaultLayout } from './layouts/DefaultLayout/DefaultLayout'
+import { APIListView } from './pages/APIListView/APIListView'
+import { ActualShowModeProvider } from './contexts/showListModeContext'
 
 export function Router() {
   return (
-    <Routes>
-      <Route path="/" element={<DefaultLayout />}>
-        <Route path="/" element={<ColumnView />} />
-        <Route path="/rowview" element={<RowView />} />
-      </Route>
-    </Routes>
+    <ActualShowModeProvider>
+      <Routes>
+        <Route path="/" element={<DefaultLayout />}>
+          <Route path="/" element={<APIListView />} />
+        </Route>
+      </Routes>
+    </ActualShowModeProvider>
   )
 }

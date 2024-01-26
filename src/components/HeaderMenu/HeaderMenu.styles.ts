@@ -17,9 +17,9 @@ export const HeaderConfigIcon = styled.i`
 
 export const DropdownContainer = styled(DropdownMenu.Content)`
   background: ${(props) => props.theme['--secondary-background']};
-  margin:0.815rem 1rem ;
+  margin: 0.815rem 1rem;
   border-radius: 8px;
-  border: 2px solid grey
+  border: 2px solid grey;
 `
 
 export const DropdownItem = styled(DropdownMenu.Item)`
@@ -28,14 +28,14 @@ export const DropdownItem = styled(DropdownMenu.Item)`
   align-items: center;
 
   p {
-    margin-left: 0.625rem
+    margin-left: 0.625rem;
   }
 
   &:hover {
-    cursor: pointer
+    cursor: pointer;
   }
 
-  &:not(:first-child){
-    border-top: 1px solid grey
+  &:not(:first-child) {
+    border-top: 1px solid grey;
   }
 `

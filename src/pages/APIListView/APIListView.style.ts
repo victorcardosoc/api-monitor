@@ -1,7 +1,13 @@
 import styled from 'styled-components'
 
-export const ColumnContainer = styled.div`
-  display: flex;
+interface displayType {
+  display: 'flex' | 'block'
+}
+
+export const ListContainer = styled.div<displayType>`
+  display: ${(props) => {
+    return `${props.display}`
+  }};
 
   @media only screen and (max-width: 959px) {
     flex-wrap: wrap;

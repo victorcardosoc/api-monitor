@@ -1,25 +1,27 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect } from 'react'
 
 interface ActualThemeType {
-    actualTheme: string,
-    changeTheme: () => void
+  actualTheme: string
+  changeTheme: () => void
 }
 
 export const ActualThemeContext = createContext({} as ActualThemeType)
 
-export function ActualThemeProvider({ children }: { children: React.ReactNode }) {
-
+export function ActualThemeProvider({
+  children,
+}: {
+  children: React.ReactNode
+}) {
   const localStorageTheme = localStorage.getItem('IPSolution-LayoutTheme')
 
-  const [actualTheme, setActualTheme] = useState(localStorageTheme ? localStorageTheme : 'dark')
+  const [actualTheme, setActualTheme] = useState(localStorageTheme || 'dark')
 
-  useEffect((() => {
-    localStorage.setItem('IPSolution-LayoutTheme', actualTheme);
-  }), [actualTheme])
+  useEffect(() => {
+    localStorage.setItem('IPSolution-LayoutTheme', actualTheme)
+  }, [actualTheme])
 
-
-  function changeTheme(){
-    setActualTheme(actualTheme === 'dark' ? 'light' : 'dark') 
+  function changeTheme() {
+    setActualTheme(actualTheme === 'dark' ? 'light' : 'dark')
   }
 
   return (
@@ -27,5 +29,4 @@ export function ActualThemeProvider({ children }: { children: React.ReactNode })
       {children}
     </ActualThemeContext.Provider>
   )
-
 }

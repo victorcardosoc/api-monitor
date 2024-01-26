@@ -6,7 +6,7 @@ import {
   UpdateIcon,
   TimerDiv,
 } from './Header.styles'
-import { GearSix, ArrowsClockwise } from 'phosphor-react'
+import { ArrowsClockwise } from 'phosphor-react'
 import { useContext, useEffect, useState } from 'react'
 import { ActiveListContext } from '../../contexts/activeListContext'
 import { AlarmListContext } from '../../contexts/alarmListContext'
@@ -46,7 +46,7 @@ export function Header() {
   }, [activeList, alarmList])
 
   useEffect(() => {
-    if (timer === 0) {
+    if (timer <= 0) {
       getLists()
     }
   }, [timer])
