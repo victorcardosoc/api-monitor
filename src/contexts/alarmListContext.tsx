@@ -37,13 +37,14 @@ export function AlarmListProvider({ children }: AlarmListProviderProps) {
     setAlarmList(data)
   }
 
-  async function updateAlarmList(alarmModel: AlarmType){
+  async function updateAlarmList(alarmModel: AlarmType) {
     await fetch(`${URL}listAlarms/${alarmModel.id}`, {
-      method: "PUT", 
+      method: 'PUT',
       headers: {
-        'Content-Type': 'application/json'
-      }, 
-      body: JSON.stringify(alarmModel)})
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(alarmModel),
+    })
 
     getAlarmList()
   }
@@ -53,7 +54,9 @@ export function AlarmListProvider({ children }: AlarmListProviderProps) {
   }, [])
 
   return (
-    <AlarmListContext.Provider value={{ alarmList, getAlarmList, updateAlarmList }}>
+    <AlarmListContext.Provider
+      value={{ alarmList, getAlarmList, updateAlarmList }}
+    >
       {children}
     </AlarmListContext.Provider>
   )

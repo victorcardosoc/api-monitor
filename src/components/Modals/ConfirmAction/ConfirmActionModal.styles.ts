@@ -54,7 +54,6 @@ export const CloseAndSaveDialog = styled.button`
   }
 `
 
-
 export const ItemContainer = styled.div`
   display: flex;
 `
@@ -64,14 +63,12 @@ export const ButtonsContainer = styled.div`
   gap: 0.625rem;
 `
 
-
 export const DialogDescription = styled(Dialog.Description)`
   margin-top: 1rem;
-
 `
 
 export const InfoText = styled.p`
-&:not(:first-child) {
+  &:not(:first-child) {
     margin-top: 0.5rem;
   }
 `

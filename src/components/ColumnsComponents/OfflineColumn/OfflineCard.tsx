@@ -2,7 +2,7 @@ import {
   CardContainer,
   FirstLine,
   MonitorDiv,
-  MonitorNameContainer
+  MonitorNameContainer,
 } from './OfflineCard.styles'
 import { MonitorModal } from '../../Modals/Monitor/MonitorModal'
 import { DropdownMenuCard } from '../CardsDropdown/Dropdown'
@@ -18,7 +18,7 @@ interface OfflineType {
     id: number
     last_send_api: string
     monitorado?: string
-    number: string 
+    number: string
     provider: string
     qtde: number
     timeoff: number
@@ -26,18 +26,16 @@ interface OfflineType {
 }
 
 export function OfflineCard({ offlineItem }: OfflineType) {
+  const { updateAlarmList } = useContext(AlarmListContext)
 
-  const {updateAlarmList} = useContext(AlarmListContext)
-
-  function updateAPI(newValue: OfflineType){
+  function updateAPI(newValue: OfflineType) {
     updateAlarmList(newValue.offlineItem)
   }
 
-  function deleteMonitorAndUpdate(){
-    offlineItem.monitorado = undefined,
+  function deleteMonitorAndUpdate() {
+    offlineItem.monitorado = undefined
     updateAlarmList(offlineItem)
   }
-
 
   return (
     <CardContainer>
@@ -46,7 +44,11 @@ export function OfflineCard({ offlineItem }: OfflineType) {
           <strong>Número: </strong>
           {offlineItem.number}
         </p>
-        <DropdownMenuCard APINumber={offlineItem.number} APIClient={offlineItem.customer} listType={'alarms'} />
+        <DropdownMenuCard
+          APINumber={offlineItem.number}
+          APIClient={offlineItem.customer}
+          listType={'alarms'}
+        />
       </FirstLine>
       <p>
         <strong>Cliente: </strong>
@@ -59,9 +61,13 @@ export function OfflineCard({ offlineItem }: OfflineType) {
       <MonitorDiv>
         <strong>Monitorado por: </strong>
         {offlineItem.monitorado != null ? (
-         <MonitorNameContainer> {offlineItem.monitorado} <MinusCircle size={20} onClick={deleteMonitorAndUpdate} /></MonitorNameContainer>
+          <MonitorNameContainer>
+            {' '}
+            {offlineItem.monitorado}{' '}
+            <MinusCircle size={20} onClick={deleteMonitorAndUpdate} />
+          </MonitorNameContainer>
         ) : (
-          <MonitorModal  offlineItem={offlineItem} updateItem={updateAPI} />
+          <MonitorModal offlineItem={offlineItem} updateItem={updateAPI} />
         )}
       </MonitorDiv>
     </CardContainer>

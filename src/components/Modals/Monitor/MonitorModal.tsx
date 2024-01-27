@@ -10,7 +10,7 @@ import {
   Field,
   CloseAndSaveDialog,
 } from './MonitorModal.styles'
-import {useForm} from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 import { useState } from 'react'
 
 interface FormDataType {
@@ -29,25 +29,23 @@ interface OfflineType {
     provider: string
     qtde: number
     timeoff: number
-  },
+  }
   updateItem: (item: OfflineType) => void
 }
 
-
 export function MonitorModal({ offlineItem, updateItem }: OfflineType) {
-
-  const{ register, handleSubmit, reset } = useForm<FormDataType>({
+  const { register, handleSubmit, reset } = useForm<FormDataType>({
     defaultValues: {
-      monitorName: ''
-    }
-  });
+      monitorName: '',
+    },
+  })
   const [dialogOpen, setDialogOpen] = useState(false)
 
-  function updateMonitor(data: FormDataType){
-    offlineItem.monitorado = data.monitorName;
+  function updateMonitor(data: FormDataType) {
+    offlineItem.monitorado = data.monitorName
     updateItem({
-      offlineItem: offlineItem,
-      updateItem: updateItem
+      offlineItem,
+      updateItem,
     })
     reset()
     setDialogOpen(false)
@@ -71,10 +69,14 @@ export function MonitorModal({ offlineItem, updateItem }: OfflineType) {
           <form onSubmit={handleSubmit(updateMonitor)}>
             <FieldContainer>
               <FieldLabel>Nome</FieldLabel>
-              <Field type="search" id="monitorName" {...register('monitorName')} />
+              <Field
+                type="search"
+                id="monitorName"
+                {...register('monitorName')}
+              />
             </FieldContainer>
-            
-            <CloseAndSaveDialog type='submit'>Salvar</CloseAndSaveDialog>
+
+            <CloseAndSaveDialog type="submit">Salvar</CloseAndSaveDialog>
           </form>
         </DialogContent>
       </Dialog.Portal>

@@ -4,17 +4,20 @@ import {
   DropdownIcon,
   DropdownItem,
 } from './Dropdown.styles'
-import { List, Trash, PencilSimple, Prohibit } from 'phosphor-react'
+import { List, PencilSimple } from 'phosphor-react'
 import { ConfirmActionModal } from '../../Modals/ConfirmAction/ConfirmActionModal'
-import { MonitorModal } from '../../Modals/Monitor/MonitorModal'
 
 interface DropwdownParams {
-  APINumber: string,
-  APIClient: string,
+  APINumber: string
+  APIClient: string
   listType: 'actives' | 'alarms'
 }
 
-export function DropdownMenuCard({APINumber, APIClient, listType}: DropwdownParams ) {
+export function DropdownMenuCard({
+  APINumber,
+  APIClient,
+  listType,
+}: DropwdownParams) {
   return (
     <DropdownMenu.Root>
       <DropdownMenu.Trigger asChild>
@@ -25,16 +28,30 @@ export function DropdownMenuCard({APINumber, APIClient, listType}: DropwdownPara
       <DropdownMenu.Portal>
         <DropdownContainer>
           <DropdownItem>
-            <ConfirmActionModal questionValues={{APINumber:`${APINumber}`, APIClient:`${APIClient}`}} actionType={'delete'}  />
+            <ConfirmActionModal
+              questionValues={{
+                APINumber: `${APINumber}`,
+                APIClient: `${APIClient}`,
+              }}
+              actionType={'delete'}
+            />
           </DropdownItem>
           <DropdownItem>
             <PencilSimple /> <p>Editar</p>
           </DropdownItem>
-          {listType == 'alarms' ?
-          <DropdownItem>
-            <ConfirmActionModal questionValues={{APINumber:`${APINumber}`, APIClient:`${APIClient}`}}  actionType={'ban'}/>
-          </DropdownItem> : ''
-          }
+          {listType === 'alarms' ? (
+            <DropdownItem>
+              <ConfirmActionModal
+                questionValues={{
+                  APINumber: `${APINumber}`,
+                  APIClient: `${APIClient}`,
+                }}
+                actionType={'ban'}
+              />
+            </DropdownItem>
+          ) : (
+            ''
+          )}
         </DropdownContainer>
       </DropdownMenu.Portal>
     </DropdownMenu.Root>

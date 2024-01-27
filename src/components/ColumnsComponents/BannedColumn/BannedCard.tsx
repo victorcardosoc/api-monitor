@@ -1,6 +1,5 @@
 import { DropdownMenuCard } from '../CardsDropdown/Dropdown'
 import { CardContainer, FirstLine } from './BannedCard.styles'
-import { List } from 'phosphor-react'
 
 interface BannedType {
   bannedItem: {
@@ -25,7 +24,11 @@ export function BannedCard({ bannedItem }: BannedType) {
           <strong>Número: </strong>
           {bannedItem.number}
         </p>
-        <DropdownMenuCard APINumber={bannedItem.number} APIClient={bannedItem.customer} listType={'alarms'} />
+        <DropdownMenuCard
+          APINumber={bannedItem.number}
+          APIClient={bannedItem.customer}
+          listType={'alarms'}
+        />
       </FirstLine>
       <p>
         <strong>Cliente: </strong>
