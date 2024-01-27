@@ -4,18 +4,36 @@ import {
   DropdownIcon,
   DropdownItem,
 } from './Dropdown.styles'
-import { List, PencilSimple } from 'phosphor-react'
+import { List } from 'phosphor-react'
 import { ConfirmActionModal } from '../../Modals/ConfirmAction/ConfirmActionModal'
+import { EditModal } from '../../Modals/EditApiModals/EditAPI'
 
 interface DropwdownParams {
-  APINumber: string
-  APIClient: string
+  APIActive?: {
+    clientename: string
+    clinica?: string
+    id: number
+    numero: string
+    status_customer: boolean
+  }
+  APIAlarm?: {
+    color: string
+    customer: string
+    date: string
+    id: number
+    last_send_api: string
+    monitorado?: string
+    number: string
+    provider: string
+    qtde: number
+    timeoff: number
+  }
   listType: 'actives' | 'alarms'
 }
 
 export function DropdownMenuCard({
-  APINumber,
-  APIClient,
+  APIActive,
+  APIAlarm,
   listType,
 }: DropwdownParams) {
   return (
@@ -30,21 +48,25 @@ export function DropdownMenuCard({
           <DropdownItem>
             <ConfirmActionModal
               questionValues={{
-                APINumber: `${APINumber}`,
-                APIClient: `${APIClient}`,
+                APINumber: `${APIActive ? APIActive.numero : APIAlarm ? APIAlarm.number : 'Inválido'}`,
+                APIClient: `${APIActive ? APIActive.clientename : APIAlarm ? APIAlarm.customer : 'Inválido'}`,
               }}
               actionType={'delete'}
             />
           </DropdownItem>
           <DropdownItem>
-            <PencilSimple /> <p>Editar</p>
+            <EditModal
+              activeItem={APIActive}
+              alarmItem={APIAlarm}
+              listType={listType}
+            />
           </DropdownItem>
           {listType === 'alarms' ? (
             <DropdownItem>
               <ConfirmActionModal
                 questionValues={{
-                  APINumber: `${APINumber}`,
-                  APIClient: `${APIClient}`,
+                  APINumber: `${APIActive ? APIActive.numero : APIAlarm ? APIAlarm.number : 'Inválido'}`,
+                  APIClient: `${APIActive ? APIActive.clientename : APIAlarm ? APIAlarm.customer : 'Inválido'}`,
                 }}
                 actionType={'ban'}
               />

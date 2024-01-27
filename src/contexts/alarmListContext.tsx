@@ -16,7 +16,7 @@ interface AlarmType {
 interface AlarmListContextType {
   alarmList: AlarmType[]
   getAlarmList: () => void
-  updateAlarmList: (alarmModel: AlarmType) => void
+  updateAlarm: (alarmModel: AlarmType) => void
 }
 
 interface AlarmListProviderProps {
@@ -37,7 +37,7 @@ export function AlarmListProvider({ children }: AlarmListProviderProps) {
     setAlarmList(data)
   }
 
-  async function updateAlarmList(alarmModel: AlarmType) {
+  async function updateAlarm(alarmModel: AlarmType) {
     await fetch(`${URL}listAlarms/${alarmModel.id}`, {
       method: 'PUT',
       headers: {
@@ -54,9 +54,7 @@ export function AlarmListProvider({ children }: AlarmListProviderProps) {
   }, [])
 
   return (
-    <AlarmListContext.Provider
-      value={{ alarmList, getAlarmList, updateAlarmList }}
-    >
+    <AlarmListContext.Provider value={{ alarmList, getAlarmList, updateAlarm }}>
       {children}
     </AlarmListContext.Provider>
   )

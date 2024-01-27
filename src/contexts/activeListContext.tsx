@@ -11,6 +11,7 @@ interface ActiveType {
 interface ActiveListContextType {
   activeList: ActiveType[]
   getActiveList: () => void
+  updateActive: (activeModel: ActiveType) => void
 }
 
 interface ActiveListProviderProps {
@@ -31,12 +32,26 @@ export function ActiveListProvider({ children }: ActiveListProviderProps) {
     setActiveList(data)
   }
 
+  async function updateActive(activeModel: ActiveType) {
+    await fetch(`${URL}listClientActive/${activeModel.id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(activeModel),
+    })
+
+    getActiveList()
+  }
+
   useEffect(() => {
     getActiveList()
   }, [])
 
   return (
-    <ActiveListContext.Provider value={{ activeList, getActiveList }}>
+    <ActiveListContext.Provider
+      value={{ activeList, getActiveList, updateActive }}
+    >
       {children}
     </ActiveListContext.Provider>
   )

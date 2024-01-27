@@ -24,11 +24,7 @@ export function BannedCard({ bannedItem }: BannedType) {
           <strong>Número: </strong>
           {bannedItem.number}
         </p>
-        <DropdownMenuCard
-          APINumber={bannedItem.number}
-          APIClient={bannedItem.customer}
-          listType={'alarms'}
-        />
+        <DropdownMenuCard APIAlarm={bannedItem} listType={'alarms'} />
       </FirstLine>
       <p>
         <strong>Cliente: </strong>

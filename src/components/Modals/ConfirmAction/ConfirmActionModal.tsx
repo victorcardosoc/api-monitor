@@ -38,7 +38,7 @@ export function ConfirmActionModal({
 
   const [dialogOpen, setDialogOpen] = useState(false)
 
-  function updateMonitor(data: FormDataType) {
+  function confirmDelete() {
     reset()
     setDialogOpen(false)
   }
@@ -83,7 +83,7 @@ export function ConfirmActionModal({
             <InfoText>Cliente: {questionValues.APIClient}</InfoText>
           </DialogDescription>
 
-          <form onSubmit={handleSubmit(updateMonitor)}>
+          <form onSubmit={handleSubmit(confirmDelete)}>
             <ButtonsContainer>
               <CloseAndSaveDialog type="submit">
                 {actionType === 'delete' ? 'Excluir' : 'Banir '}

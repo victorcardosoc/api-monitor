@@ -26,15 +26,15 @@ interface OfflineType {
 }
 
 export function OfflineCard({ offlineItem }: OfflineType) {
-  const { updateAlarmList } = useContext(AlarmListContext)
+  const { updateAlarm } = useContext(AlarmListContext)
 
   function updateAPI(newValue: OfflineType) {
-    updateAlarmList(newValue.offlineItem)
+    updateAlarm(newValue.offlineItem)
   }
 
   function deleteMonitorAndUpdate() {
     offlineItem.monitorado = undefined
-    updateAlarmList(offlineItem)
+    updateAlarm(offlineItem)
   }
 
   return (
@@ -44,11 +44,7 @@ export function OfflineCard({ offlineItem }: OfflineType) {
           <strong>Número: </strong>
           {offlineItem.number}
         </p>
-        <DropdownMenuCard
-          APINumber={offlineItem.number}
-          APIClient={offlineItem.customer}
-          listType={'alarms'}
-        />
+        <DropdownMenuCard APIAlarm={offlineItem} listType={'alarms'} />
       </FirstLine>
       <p>
         <strong>Cliente: </strong>

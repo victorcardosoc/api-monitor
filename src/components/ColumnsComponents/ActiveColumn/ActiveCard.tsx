@@ -19,11 +19,7 @@ export function ActiveCard({ activeItem }: ActiveType) {
           <strong>Número: </strong>
           {activeItem.numero}
         </p>
-        <DropdownMenuCard
-          APINumber={activeItem.numero}
-          APIClient={activeItem.clientename}
-          listType={'actives'}
-        />
+        <DropdownMenuCard APIActive={activeItem} listType={'actives'} />
       </FirstLine>
       <p>
         <strong>Cliente: </strong>
