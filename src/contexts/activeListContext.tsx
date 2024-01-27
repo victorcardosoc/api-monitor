@@ -13,6 +13,7 @@ interface ActiveListContextType {
   getActiveList: () => void
   updateActive: (activeModel: ActiveType) => void
   deleteActiveAPI: (activeModelId: number) => void
+  filterActiveList: (filterInput: string) => void
 }
 
 interface ActiveListProviderProps {
@@ -26,11 +27,27 @@ export function ActiveListProvider({ children }: ActiveListProviderProps) {
 
   const URL = import.meta.env.VITE_API_URL
 
+  function filterActiveList(inputFilter: string) {
+    getActiveList().then((res) => {
+      setActiveList(
+        res.filter((activeItem: ActiveType) => {
+          return (
+            activeItem.clientename
+              .toUpperCase()
+              .includes(inputFilter.toUpperCase()) ||
+            activeItem.numero.toUpperCase().includes(inputFilter.toUpperCase())
+          )
+        }),
+      )
+    })
+  }
+
   async function getActiveList() {
     const response = await fetch(`${URL}listClientActive`)
     const data = await response.json()
 
     setActiveList(data)
+    return data
   }
 
   async function updateActive(activeModel: ActiveType) {
@@ -62,7 +79,13 @@ export function ActiveListProvider({ children }: ActiveListProviderProps) {
 
   return (
     <ActiveListContext.Provider
-      value={{ activeList, getActiveList, updateActive, deleteActiveAPI }}
+      value={{
+        activeList,
+        getActiveList,
+        updateActive,
+        deleteActiveAPI,
+        filterActiveList,
+      }}
     >
       {children}
     </ActiveListContext.Provider>

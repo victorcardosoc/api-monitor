@@ -65,7 +65,6 @@ export function EditModal({ activeItem, alarmItem, listType }: ActiveType) {
   const [dialogOpen, setDialogOpen] = useState(false)
 
   function updateItem(data: FormDataType) {
-    console.log(activeItem, data)
     if (listType === 'actives' && activeItem) {
       activeItem.clientename = data.clientName
       activeItem.numero = data.number

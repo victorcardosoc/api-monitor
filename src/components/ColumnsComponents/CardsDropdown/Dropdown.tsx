@@ -50,7 +50,9 @@ export function DropdownMenuCard({
               questionValues={{
                 APINumber: `${APIActive ? APIActive.numero : APIAlarm ? APIAlarm.number : 'Inválido'}`,
                 APIClient: `${APIActive ? APIActive.clientename : APIAlarm ? APIAlarm.customer : 'Inválido'}`,
-                APIId: `${APIActive ? APIActive.id : APIAlarm ? APIAlarm.id : 0}`,
+                APIId: Number(
+                  `${APIActive ? APIActive.id : APIAlarm ? APIAlarm.id : 0}`,
+                ),
               }}
               listType={listType}
               actionType={'delete'}
@@ -69,7 +71,9 @@ export function DropdownMenuCard({
                 questionValues={{
                   APINumber: `${APIActive ? APIActive.numero : APIAlarm ? APIAlarm.number : 'Inválido'}`,
                   APIClient: `${APIActive ? APIActive.clientename : APIAlarm ? APIAlarm.customer : 'Inválido'}`,
-                  APIId: `${APIActive ? APIActive.id : APIAlarm ? APIAlarm.id : 0}`,
+                  APIId: Number(
+                    `${APIActive ? APIActive.id : APIAlarm ? APIAlarm.id : 0}`,
+                  ),
                 }}
                 listType={listType}
                 actionType={'ban'}

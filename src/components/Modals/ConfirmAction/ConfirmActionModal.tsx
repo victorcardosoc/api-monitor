@@ -1,5 +1,4 @@
 import * as Dialog from '@radix-ui/react-dialog'
-import * as Checkbox from '@radix-ui/react-checkbox'
 import { Trash, Prohibit, X } from 'phosphor-react'
 import {
   DialogContent,
@@ -12,7 +11,6 @@ import {
   InfoText,
   ButtonsContainer,
 } from './ConfirmActionModal.styles'
-import { useForm } from 'react-hook-form'
 import { useContext, useState } from 'react'
 import { ActiveListContext } from '../../../contexts/activeListContext'
 import { AlarmListContext } from '../../../contexts/alarmListContext'

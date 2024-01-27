@@ -18,6 +18,7 @@ interface AlarmListContextType {
   getAlarmList: () => void
   updateAlarm: (alarmModel: AlarmType) => void
   deleteAlarmAPI: (alarmModelId: number) => void
+  filterAlarmList: (filterInput: string) => void
 }
 
 interface AlarmListProviderProps {
@@ -31,11 +32,27 @@ export function AlarmListProvider({ children }: AlarmListProviderProps) {
 
   const URL = import.meta.env.VITE_API_URL
 
+  function filterAlarmList(inputFilter: string) {
+    getAlarmList().then((res) => {
+      setAlarmList(
+        res.filter((alarmItem: AlarmType) => {
+          return (
+            alarmItem.customer
+              .toUpperCase()
+              .includes(inputFilter.toUpperCase()) ||
+            alarmItem.number.toUpperCase().includes(inputFilter.toUpperCase())
+          )
+        }),
+      )
+    })
+  }
+
   async function getAlarmList() {
     const response = await fetch(`${URL}listAlarms`)
     const data = await response.json()
 
     setAlarmList(data)
+    return data
   }
 
   async function updateAlarm(alarmModel: AlarmType) {
@@ -67,7 +84,13 @@ export function AlarmListProvider({ children }: AlarmListProviderProps) {
 
   return (
     <AlarmListContext.Provider
-      value={{ alarmList, getAlarmList, updateAlarm, deleteAlarmAPI }}
+      value={{
+        alarmList,
+        getAlarmList,
+        updateAlarm,
+        deleteAlarmAPI,
+        filterAlarmList,
+      }}
     >
       {children}
     </AlarmListContext.Provider>

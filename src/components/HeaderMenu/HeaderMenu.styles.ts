@@ -40,3 +40,22 @@ export const DropdownItem = styled(DropdownMenu.Item)`
     border-top: 1px solid grey;
   }
 `
+export const DropdownItemDialog = styled.div`
+  padding: 0.625rem;
+  display: flex;
+  align-items: center;
+  width: 100%;
+
+  p {
+    margin-left: 0.625rem;
+  }
+
+  &:hover {
+    cursor: pointer;
+    opacity: 0.8;
+  }
+
+  &:not(:first-child) {
+    border-top: 1px solid grey;
+  }
+`

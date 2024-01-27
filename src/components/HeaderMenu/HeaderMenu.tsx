@@ -1,20 +1,15 @@
-import {
-  GearSix,
-  MagnifyingGlass,
-  SunDim,
-  MoonStars,
-  Rows,
-  Columns,
-} from 'phosphor-react'
+import { GearSix, SunDim, MoonStars, Rows, Columns } from 'phosphor-react'
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
 import {
   DropdownContainer,
   DropdownItem,
+  DropdownItemDialog,
   HeaderConfigIcon,
 } from './HeaderMenu.styles'
 import { useContext } from 'react'
 import { ActualThemeContext } from '../../contexts/actualThemeContext'
 import { ActualShowModeContext } from '../../contexts/showListModeContext'
+import { FilterModal } from '../Modals/ListFilter/FilterModal'
 
 export function HeaderMenuDialog() {
   const { actualTheme, changeTheme } = useContext(ActualThemeContext)
@@ -66,9 +61,9 @@ export function HeaderMenuDialog() {
           <DropdownItem onClick={changeMode}>
             {returnViewTypeItem()}
           </DropdownItem>
-          <DropdownItem>
-            <MagnifyingGlass /> <p>Filtrar Listas</p>
-          </DropdownItem>
+          <DropdownItemDialog>
+            <FilterModal />
+          </DropdownItemDialog>
           <DropdownItem onClick={changeTheme}>
             {returnThemeModeItem()}
           </DropdownItem>
