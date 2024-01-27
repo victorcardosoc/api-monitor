@@ -1,5 +1,6 @@
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
 import {
+  DropdownBlackIcon,
   DropdownContainer,
   DropdownIcon,
   DropdownItem,
@@ -29,19 +30,27 @@ interface DropwdownParams {
     timeoff: number
   }
   listType: 'actives' | 'alarms'
+  hasOffline?: boolean
 }
 
 export function DropdownMenuCard({
   APIActive,
   APIAlarm,
   listType,
+  hasOffline = false,
 }: DropwdownParams) {
   return (
     <DropdownMenu.Root>
       <DropdownMenu.Trigger asChild>
-        <DropdownIcon>
-          <List size={20} />
-        </DropdownIcon>
+        {hasOffline ? (
+          <DropdownBlackIcon>
+            <List size={20} />
+          </DropdownBlackIcon>
+        ) : (
+          <DropdownIcon>
+            <List size={20} />
+          </DropdownIcon>
+        )}
       </DropdownMenu.Trigger>
       <DropdownMenu.Portal>
         <DropdownContainer>

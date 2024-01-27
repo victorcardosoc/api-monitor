@@ -15,6 +15,20 @@ export const DropdownIcon = styled.i`
   }
 `
 
+export const DropdownBlackIcon = styled.i`
+  border-radius: 4px;
+  color: ${(props) => props.theme['--text-fake-black']};
+  transition: 0.2s;
+  height: 20px;
+  width: 20px;
+  margin-right: 0.2rem;
+
+  &:hover {
+    cursor: pointer;
+    color: grey;
+  }
+`
+
 export const DropdownContainer = styled(DropdownMenu.Content)`
   background: ${(props) => props.theme['--secondary-background']};
   margin-top: 0.25rem;

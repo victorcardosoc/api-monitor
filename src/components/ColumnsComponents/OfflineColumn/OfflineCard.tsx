@@ -44,7 +44,11 @@ export function OfflineCard({ offlineItem }: OfflineType) {
           <strong>Número: </strong>
           {offlineItem.number}
         </p>
-        <DropdownMenuCard APIAlarm={offlineItem} listType={'alarms'} />
+        <DropdownMenuCard
+          APIAlarm={offlineItem}
+          listType={'alarms'}
+          hasOffline
+        />
       </FirstLine>
       <p>
         <strong>Cliente: </strong>
