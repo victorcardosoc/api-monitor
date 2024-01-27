@@ -56,6 +56,13 @@ export const CloseAndSaveDialog = styled.button`
 
 export const ItemContainer = styled.div`
   display: flex;
+  padding: 0.625rem;
+  width: 100%;
+  align-items: center;
+
+  p {
+    margin-top: 0.125rem;
+  }
 `
 
 export const ButtonsContainer = styled.div`

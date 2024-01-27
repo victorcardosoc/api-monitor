@@ -83,4 +83,11 @@ export const Field = styled.input`
 `
 export const ItemContainer = styled.div`
   display: flex;
+  width: 100%;
+  padding: 0.625rem;
+  align-items: center;
+
+  p {
+    margin-top: 0.125rem;
+  }
 `

@@ -2,6 +2,7 @@ export const lightTheme = {
   '--white': '#fff',
 
   '--text-color': '#292929',
+  '--text-fake-black': '#292929',
 
   '--main-background': '#F3F3F3',
   '--secondary-background': '#DBDBDB',

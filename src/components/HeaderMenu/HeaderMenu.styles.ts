@@ -29,6 +29,7 @@ export const DropdownItem = styled(DropdownMenu.Item)`
 
   p {
     margin-left: 0.625rem;
+    margin-top: 0.125rem;
   }
 
   &:hover {
@@ -41,7 +42,6 @@ export const DropdownItem = styled(DropdownMenu.Item)`
   }
 `
 export const DropdownItemDialog = styled.div`
-  padding: 0.625rem;
   display: flex;
   align-items: center;
   width: 100%;
