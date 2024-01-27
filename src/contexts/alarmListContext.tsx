@@ -17,6 +17,7 @@ interface AlarmListContextType {
   alarmList: AlarmType[]
   getAlarmList: () => void
   updateAlarm: (alarmModel: AlarmType) => void
+  deleteAlarmAPI: (alarmModelId: number) => void
 }
 
 interface AlarmListProviderProps {
@@ -49,12 +50,25 @@ export function AlarmListProvider({ children }: AlarmListProviderProps) {
     getAlarmList()
   }
 
+  async function deleteAlarmAPI(alarmModelId: number) {
+    await fetch(`${URL}listAlarms/${alarmModelId}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+
+    getAlarmList()
+  }
+
   useEffect(() => {
     getAlarmList()
   }, [])
 
   return (
-    <AlarmListContext.Provider value={{ alarmList, getAlarmList, updateAlarm }}>
+    <AlarmListContext.Provider
+      value={{ alarmList, getAlarmList, updateAlarm, deleteAlarmAPI }}
+    >
       {children}
     </AlarmListContext.Provider>
   )

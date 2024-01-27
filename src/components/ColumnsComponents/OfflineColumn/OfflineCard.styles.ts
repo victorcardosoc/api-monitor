@@ -41,11 +41,12 @@ export const MonitorNameContainer = styled.div`
   }
 `
 
-export const MonitorDiv = styled.p`
+export const MonitorDiv = styled.div`
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
   gap: 0.375rem;
+  line-height: 1.6;
 
   & > svg {
     color: #002500;

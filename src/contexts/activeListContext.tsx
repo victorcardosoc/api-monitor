@@ -12,6 +12,7 @@ interface ActiveListContextType {
   activeList: ActiveType[]
   getActiveList: () => void
   updateActive: (activeModel: ActiveType) => void
+  deleteActiveAPI: (activeModelId: number) => void
 }
 
 interface ActiveListProviderProps {
@@ -44,13 +45,24 @@ export function ActiveListProvider({ children }: ActiveListProviderProps) {
     getActiveList()
   }
 
+  async function deleteActiveAPI(activeModelId: number) {
+    await fetch(`${URL}listClientActive/${activeModelId}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+
+    getActiveList()
+  }
+
   useEffect(() => {
     getActiveList()
   }, [])
 
   return (
     <ActiveListContext.Provider
-      value={{ activeList, getActiveList, updateActive }}
+      value={{ activeList, getActiveList, updateActive, deleteActiveAPI }}
     >
       {children}
     </ActiveListContext.Provider>

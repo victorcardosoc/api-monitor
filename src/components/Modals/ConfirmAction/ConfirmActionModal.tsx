@@ -1,4 +1,5 @@
 import * as Dialog from '@radix-ui/react-dialog'
+import * as Checkbox from '@radix-ui/react-checkbox'
 import { Trash, Prohibit, X } from 'phosphor-react'
 import {
   DialogContent,
@@ -12,34 +13,41 @@ import {
   ButtonsContainer,
 } from './ConfirmActionModal.styles'
 import { useForm } from 'react-hook-form'
-import { useState } from 'react'
-
-interface FormDataType {
-  hasConfirmed: boolean
-}
+import { useContext, useState } from 'react'
+import { ActiveListContext } from '../../../contexts/activeListContext'
+import { AlarmListContext } from '../../../contexts/alarmListContext'
 
 interface ConfirmModalType {
   questionValues: {
     APINumber: string
     APIClient: string
+    APIId: number
   }
+  listType: 'actives' | 'alarms'
   actionType: 'ban' | 'delete'
 }
 
 export function ConfirmActionModal({
   questionValues,
   actionType,
+  listType,
 }: ConfirmModalType) {
-  const { register, handleSubmit, reset } = useForm<FormDataType>({
-    defaultValues: {
-      hasConfirmed: false,
-    },
-  })
-
+  const { deleteActiveAPI } = useContext(ActiveListContext)
+  const { deleteAlarmAPI } = useContext(AlarmListContext)
   const [dialogOpen, setDialogOpen] = useState(false)
 
-  function confirmDelete() {
-    reset()
+  function confirmDeletionOrBan() {
+    if (actionType === 'delete') {
+      if (listType === 'actives') {
+        deleteActiveAPI(questionValues.APIId)
+      } else {
+        deleteAlarmAPI(questionValues.APIId)
+      }
+    }
+    closeDialog()
+  }
+
+  function closeDialog() {
     setDialogOpen(false)
   }
 
@@ -83,14 +91,14 @@ export function ConfirmActionModal({
             <InfoText>Cliente: {questionValues.APIClient}</InfoText>
           </DialogDescription>
 
-          <form onSubmit={handleSubmit(confirmDelete)}>
-            <ButtonsContainer>
-              <CloseAndSaveDialog type="submit">
-                {actionType === 'delete' ? 'Excluir' : 'Banir '}
-              </CloseAndSaveDialog>
-              <CloseAndSaveDialog type="submit">Cancelar</CloseAndSaveDialog>
-            </ButtonsContainer>
-          </form>
+          <ButtonsContainer>
+            <CloseAndSaveDialog onClick={confirmDeletionOrBan}>
+              {actionType === 'delete' ? 'Excluir' : 'Banir '}
+            </CloseAndSaveDialog>
+            <CloseAndSaveDialog onClick={closeDialog}>
+              Cancelar
+            </CloseAndSaveDialog>
+          </ButtonsContainer>
         </DialogContent>
       </Dialog.Portal>
     </Dialog.Root>

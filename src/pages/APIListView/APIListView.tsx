@@ -22,8 +22,8 @@ export function APIListView() {
           listSize={activeList.length}
         />
         <CardListColumn>
-          {activeList.map((activeItem) => {
-            return <ActiveCard activeItem={activeItem} key={activeItem.id} />
+          {activeList.map((activeItem, index) => {
+            return <ActiveCard activeItem={activeItem} key={index} />
           })}
         </CardListColumn>
       </Column>
@@ -35,10 +35,8 @@ export function APIListView() {
           listSize={alarmList.length}
         />
         <CardListColumn>
-          {alarmList.map((offlineItem) => {
-            return (
-              <OfflineCard offlineItem={offlineItem} key={offlineItem.id} />
-            )
+          {alarmList.map((offlineItem, index) => {
+            return <OfflineCard offlineItem={offlineItem} key={index} />
           })}
         </CardListColumn>
       </Column>
@@ -50,8 +48,8 @@ export function APIListView() {
           listSize={alarmList.length}
         />
         <CardListColumn>
-          {alarmList.map((bannedItem) => {
-            return <BannedCard bannedItem={bannedItem} key={bannedItem.id} />
+          {alarmList.map((bannedItem, index) => {
+            return <BannedCard bannedItem={bannedItem} key={index} />
           })}
         </CardListColumn>
       </Column>
