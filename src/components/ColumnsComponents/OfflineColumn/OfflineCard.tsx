@@ -3,38 +3,40 @@ import {
   FirstLine,
   MonitorDiv,
   MonitorNameContainer,
-} from './OfflineCard.styles'
-import { MonitorModal } from '../../Modals/Monitor/MonitorModal'
-import { DropdownMenuCard } from '../CardsDropdown/Dropdown'
-import { useContext } from 'react'
-import { AlarmListContext } from '../../../contexts/alarmListContext'
-import { MinusCircle } from 'phosphor-react'
+} from "./OfflineCard.styles";
+import { MonitorModal } from "../../Modals/Monitor/MonitorModal";
+import { DropdownMenuCard } from "../CardsDropdown/Dropdown";
+import { useContext } from "react";
+import { AlarmListContext } from "../../../contexts/alarmListContext";
+import { MinusCircle } from "phosphor-react";
 
 interface OfflineType {
   offlineItem: {
-    color: string
-    customer: string
-    date: string
-    id: number
-    last_send_api: string
-    monitorado?: string
-    number: string
-    provider: string
-    qtde: number
-    timeoff: number
-  }
+    chatId: string;
+    status: string;
+    color: string;
+    customer: string;
+    date: string;
+    id: number;
+    last_send_api: string;
+    monitorado?: string;
+    number: string;
+    provider: string;
+    qtde: number;
+    timeoff: number;
+  };
 }
 
 export function OfflineCard({ offlineItem }: OfflineType) {
-  const { updateAlarm } = useContext(AlarmListContext)
+  const { updateAlarm } = useContext(AlarmListContext);
 
   function updateAPI(newValue: OfflineType) {
-    updateAlarm(newValue.offlineItem)
+    updateAlarm(newValue.offlineItem);
   }
 
   function deleteMonitorAndUpdate() {
-    offlineItem.monitorado = undefined
-    updateAlarm(offlineItem)
+    offlineItem.monitorado = undefined;
+    updateAlarm(offlineItem);
   }
 
   return (
@@ -42,17 +44,17 @@ export function OfflineCard({ offlineItem }: OfflineType) {
       <FirstLine>
         <p>
           <strong>Número: </strong>
-          {offlineItem.number}
+          {offlineItem.chatId}
         </p>
         <DropdownMenuCard
           APIAlarm={offlineItem}
-          listType={'alarms'}
+          listType={"alarms"}
           hasOffline
         />
       </FirstLine>
       <p>
-        <strong>Cliente: </strong>
-        {offlineItem.customer}
+        <strong>Status: </strong>
+        {offlineItem.status}
       </p>
       <p>
         <strong>Tempo Fora: </strong>
@@ -62,8 +64,8 @@ export function OfflineCard({ offlineItem }: OfflineType) {
         <strong>Monitorado por: </strong>
         {offlineItem.monitorado != null ? (
           <MonitorNameContainer>
-            {' '}
-            {offlineItem.monitorado}{' '}
+            {" "}
+            {offlineItem.monitorado}{" "}
             <MinusCircle size={20} onClick={deleteMonitorAndUpdate} />
           </MonitorNameContainer>
         ) : (
@@ -71,5 +73,5 @@ export function OfflineCard({ offlineItem }: OfflineType) {
         )}
       </MonitorDiv>
     </CardContainer>
-  )
+  );
 }

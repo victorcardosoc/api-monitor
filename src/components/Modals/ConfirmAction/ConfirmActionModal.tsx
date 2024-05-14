@@ -1,5 +1,5 @@
-import * as Dialog from '@radix-ui/react-dialog'
-import { Trash, Prohibit, X } from 'phosphor-react'
+import * as Dialog from "@radix-ui/react-dialog";
+import { Trash, Prohibit, X } from "phosphor-react";
 import {
   DialogContent,
   DialogOverlay,
@@ -10,19 +10,19 @@ import {
   DialogDescription,
   InfoText,
   ButtonsContainer,
-} from './ConfirmActionModal.styles'
-import { useContext, useState } from 'react'
-import { ActiveListContext } from '../../../contexts/activeListContext'
-import { AlarmListContext } from '../../../contexts/alarmListContext'
+} from "./ConfirmActionModal.styles";
+import { useContext, useState } from "react";
+import { ActiveListContext } from "../../../contexts/activeListContext";
+import { AlarmListContext } from "../../../contexts/alarmListContext";
 
 interface ConfirmModalType {
   questionValues: {
-    APINumber: string
-    APIClient: string
-    APIId: number
-  }
-  listType: 'actives' | 'alarms'
-  actionType: 'ban' | 'delete'
+    APINumber: string;
+    APIClient: string;
+    APIId: number;
+  };
+  listType: "actives" | "alarms";
+  actionType: "ban" | "delete";
 }
 
 export function ConfirmActionModal({
@@ -30,30 +30,30 @@ export function ConfirmActionModal({
   actionType,
   listType,
 }: ConfirmModalType) {
-  const { deleteActiveAPI } = useContext(ActiveListContext)
-  const { deleteAlarmAPI } = useContext(AlarmListContext)
-  const [dialogOpen, setDialogOpen] = useState(false)
+  const { deleteActiveAPI } = useContext(ActiveListContext);
+  const { deleteAlarmAPI } = useContext(AlarmListContext);
+  const [dialogOpen, setDialogOpen] = useState(false);
 
   function confirmDeletionOrBan() {
-    if (actionType === 'delete') {
-      if (listType === 'actives') {
-        deleteActiveAPI(questionValues.APIId)
+    if (actionType === "delete") {
+      if (listType === "actives") {
+        deleteActiveAPI(questionValues.APIId);
       } else {
-        deleteAlarmAPI(questionValues.APIId)
+        deleteAlarmAPI(questionValues.APIId);
       }
     }
-    closeDialog()
+    closeDialog();
   }
 
   function closeDialog() {
-    setDialogOpen(false)
+    setDialogOpen(false);
   }
 
   return (
     <Dialog.Root open={dialogOpen} onOpenChange={setDialogOpen}>
       <Dialog.Trigger asChild>
         <ItemContainer>
-          {actionType === 'delete' ? (
+          {actionType === "delete" ? (
             <>
               <Trash />
               <p>Excluir</p>
@@ -70,7 +70,7 @@ export function ConfirmActionModal({
         <DialogOverlay />
         <DialogContent>
           <DialogTitle>
-            {actionType === 'delete' ? (
+            {actionType === "delete" ? (
               <>
                 <p>Excluir API</p>
               </>
@@ -86,12 +86,12 @@ export function ConfirmActionModal({
 
           <DialogDescription>
             <InfoText>Número: {questionValues.APINumber}</InfoText>
-            <InfoText>Cliente: {questionValues.APIClient}</InfoText>
+            <InfoText>Status: {questionValues.APIClient}</InfoText>
           </DialogDescription>
 
           <ButtonsContainer>
             <CloseAndSaveDialog onClick={confirmDeletionOrBan}>
-              {actionType === 'delete' ? 'Excluir' : 'Banir '}
+              {actionType === "delete" ? "Excluir" : "Banir "}
             </CloseAndSaveDialog>
             <CloseAndSaveDialog onClick={closeDialog}>
               Cancelar
@@ -100,5 +100,5 @@ export function ConfirmActionModal({
         </DialogContent>
       </Dialog.Portal>
     </Dialog.Root>
-  )
+  );
 }

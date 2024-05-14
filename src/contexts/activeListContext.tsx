@@ -1,81 +1,95 @@
-import { ReactNode, createContext, useEffect, useState } from 'react'
+import { ReactNode, createContext, useEffect, useState } from "react";
 
 interface ActiveType {
-  clientename: string
-  clinica?: string
-  id: number
-  numero: string
-  status_customer: boolean
+  status: string;
+  chatId: string;
+  clientename: string;
+  clinica?: string;
+  id: number;
+  numero: string;
+  status_customer: boolean;
 }
 
 interface ActiveListContextType {
-  activeList: ActiveType[]
-  getActiveList: () => void
-  updateActive: (activeModel: ActiveType) => void
-  deleteActiveAPI: (activeModelId: number) => void
-  filterActiveList: (filterInput: string) => void
+  activeList: ActiveType[];
+  getActiveList: () => void;
+  updateActive: (activeModel: ActiveType) => void;
+  deleteActiveAPI: (activeModelId: number) => void;
+  filterActiveList: (filterInput: string) => void;
 }
 
 interface ActiveListProviderProps {
-  children: ReactNode
+  children: ReactNode;
 }
 
-export const ActiveListContext = createContext({} as ActiveListContextType)
+export const ActiveListContext = createContext({} as ActiveListContextType);
 
 export function ActiveListProvider({ children }: ActiveListProviderProps) {
-  const [activeList, setActiveList] = useState<ActiveType[]>([])
-
-  const URL = import.meta.env.VITE_API_URL
+  const [activeList, setActiveList] = useState<ActiveType[]>([]);
 
   function filterActiveList(inputFilter: string) {
-    getActiveList().then((res) => {
+    getActiveList().then((res: any) => {
       setActiveList(
         res.filter((activeItem: ActiveType) => {
           return (
             activeItem.clientename
               .toUpperCase()
               .includes(inputFilter.toUpperCase()) ||
-            activeItem.numero.toUpperCase().includes(inputFilter.toUpperCase())
-          )
-        }),
-      )
-    })
+            activeItem.chatId.toUpperCase().includes(inputFilter.toUpperCase())
+          );
+        })
+      );
+    });
   }
 
   async function getActiveList() {
-    const response = await fetch(`${URL}listClientActive`)
-    const data = await response.json()
+    const response = await fetch(
+      `http://monitoramento.ipsolutiontelecom.com.br:3000/channels`
+    );
+    const data = await response.json();
+    const ativos = data.filter((activeItem: ActiveType) => {
+      return (
+        activeItem.status === "inChat" ||
+        activeItem.status === "autocloseCalled"
+      );
+    });
+    console.log(ativos);
 
-    setActiveList(data)
-    return data
+    setActiveList(ativos);
   }
 
   async function updateActive(activeModel: ActiveType) {
-    await fetch(`${URL}listClientActive/${activeModel.id}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(activeModel),
-    })
+    await fetch(
+      `http://monitoramento.ipsolutiontelecom.com.br:3000/channels/${activeModel.id}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(activeModel),
+      }
+    );
 
-    getActiveList()
+    getActiveList();
   }
 
   async function deleteActiveAPI(activeModelId: number) {
-    await fetch(`${URL}listClientActive/${activeModelId}`, {
-      method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
+    await fetch(
+      `http://monitoramento.ipsolutiontelecom.com.br:3000/channels/${activeModelId}`,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
 
-    getActiveList()
+    getActiveList();
   }
 
   useEffect(() => {
-    getActiveList()
-  }, [])
+    getActiveList();
+  }, []);
 
   return (
     <ActiveListContext.Provider
@@ -89,5 +103,5 @@ export function ActiveListProvider({ children }: ActiveListProviderProps) {
     >
       {children}
     </ActiveListContext.Provider>
-  )
+  );
 }

@@ -1,7 +1,7 @@
-import { Routes, Route } from 'react-router-dom'
-import { DefaultLayout } from './layouts/DefaultLayout/DefaultLayout'
-import { APIListView } from './pages/APIListView/APIListView'
-import { ActualShowModeProvider } from './contexts/showListModeContext'
+import { Routes, Route } from "react-router-dom";
+import { DefaultLayout } from "./layouts/DefaultLayout/DefaultLayout";
+import { APIListView } from "./pages/APIListView/APIListView";
+import { ActualShowModeProvider } from "./contexts/showListModeContext";
 
 export function Router() {
   return (
@@ -12,5 +12,5 @@ export function Router() {
         </Route>
       </Routes>
     </ActualShowModeProvider>
-  )
+  );
 }

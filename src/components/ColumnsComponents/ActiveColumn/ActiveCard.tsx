@@ -1,14 +1,16 @@
-import { CardContainer, FirstLine } from './ActiveCard.styles'
-import { DropdownMenuCard } from '../CardsDropdown/Dropdown'
+import { CardContainer, FirstLine } from "./ActiveCard.styles";
+import { DropdownMenuCard } from "../CardsDropdown/Dropdown";
 
 interface ActiveType {
   activeItem: {
-    clientename: string
-    clinica?: string
-    id: number
-    numero: string
-    status_customer: boolean
-  }
+    chatId: string;
+    status: string;
+    clientename: string;
+    clinica?: string;
+    id: number;
+    numero: string;
+    status_customer: boolean;
+  };
 }
 
 export function ActiveCard({ activeItem }: ActiveType) {
@@ -17,14 +19,14 @@ export function ActiveCard({ activeItem }: ActiveType) {
       <FirstLine>
         <p>
           <strong>Número: </strong>
-          {activeItem.numero}
+          {activeItem.chatId}
         </p>
-        <DropdownMenuCard APIActive={activeItem} listType={'actives'} />
+        <DropdownMenuCard APIActive={activeItem} listType={"actives"} />
       </FirstLine>
       <p>
-        <strong>Cliente: </strong>
-        {activeItem.clientename}
+        <strong>Status: </strong>
+        {activeItem.status}
       </p>
     </CardContainer>
-  )
+  );
 }

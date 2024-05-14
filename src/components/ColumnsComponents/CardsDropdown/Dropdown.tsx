@@ -1,36 +1,40 @@
-import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
+import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import {
   DropdownBlackIcon,
   DropdownContainer,
   DropdownIcon,
   DropdownItem,
-} from './Dropdown.styles'
-import { List } from 'phosphor-react'
-import { ConfirmActionModal } from '../../Modals/ConfirmAction/ConfirmActionModal'
-import { EditModal } from '../../Modals/EditApiModals/EditAPI'
+} from "./Dropdown.styles";
+import { List } from "phosphor-react";
+import { ConfirmActionModal } from "../../Modals/ConfirmAction/ConfirmActionModal";
+import { EditModal } from "../../Modals/EditApiModals/EditAPI";
 
 interface DropwdownParams {
   APIActive?: {
-    clientename: string
-    clinica?: string
-    id: number
-    numero: string
-    status_customer: boolean
-  }
+    chatId: string;
+    status: string;
+    clientename: string;
+    clinica?: string;
+    id: number;
+    numero: string;
+    status_customer: boolean;
+  };
   APIAlarm?: {
-    color: string
-    customer: string
-    date: string
-    id: number
-    last_send_api: string
-    monitorado?: string
-    number: string
-    provider: string
-    qtde: number
-    timeoff: number
-  }
-  listType: 'actives' | 'alarms'
-  hasOffline?: boolean
+    status: string;
+    chatId: string;
+    color: string;
+    customer: string;
+    date: string;
+    id: number;
+    last_send_api: string;
+    monitorado?: string;
+    number: string;
+    provider: string;
+    qtde: number;
+    timeoff: number;
+  };
+  listType: "actives" | "alarms";
+  hasOffline?: boolean;
 }
 
 export function DropdownMenuCard({
@@ -57,14 +61,14 @@ export function DropdownMenuCard({
           <DropdownItem>
             <ConfirmActionModal
               questionValues={{
-                APINumber: `${APIActive ? APIActive.numero : APIAlarm ? APIAlarm.number : 'Inválido'}`,
-                APIClient: `${APIActive ? APIActive.clientename : APIAlarm ? APIAlarm.customer : 'Inválido'}`,
+                APINumber: `${APIActive ? APIActive.numero : APIAlarm ? APIAlarm.number : "Inválido"}`,
+                APIClient: `${APIActive ? APIActive.clientename : APIAlarm ? APIAlarm.customer : "Inválido"}`,
                 APIId: Number(
-                  `${APIActive ? APIActive.id : APIAlarm ? APIAlarm.id : 0}`,
+                  `${APIActive ? APIActive.id : APIAlarm ? APIAlarm.id : 0}`
                 ),
               }}
               listType={listType}
-              actionType={'delete'}
+              actionType={"delete"}
             />
           </DropdownItem>
           <DropdownItem>
@@ -74,25 +78,25 @@ export function DropdownMenuCard({
               listType={listType}
             />
           </DropdownItem>
-          {listType === 'alarms' ? (
+          {listType === "alarms" ? (
             <DropdownItem>
               <ConfirmActionModal
                 questionValues={{
-                  APINumber: `${APIActive ? APIActive.numero : APIAlarm ? APIAlarm.number : 'Inválido'}`,
-                  APIClient: `${APIActive ? APIActive.clientename : APIAlarm ? APIAlarm.customer : 'Inválido'}`,
+                  APINumber: `${APIActive ? APIActive.numero : APIAlarm ? APIAlarm.number : "Inválido"}`,
+                  APIClient: `${APIActive ? APIActive.clientename : APIAlarm ? APIAlarm.customer : "Inválido"}`,
                   APIId: Number(
-                    `${APIActive ? APIActive.id : APIAlarm ? APIAlarm.id : 0}`,
+                    `${APIActive ? APIActive.id : APIAlarm ? APIAlarm.id : 0}`
                   ),
                 }}
                 listType={listType}
-                actionType={'ban'}
+                actionType={"ban"}
               />
             </DropdownItem>
           ) : (
-            ''
+            ""
           )}
         </DropdownContainer>
       </DropdownMenu.Portal>
     </DropdownMenu.Root>
-  )
+  );
 }

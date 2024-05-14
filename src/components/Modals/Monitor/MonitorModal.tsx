@@ -1,5 +1,5 @@
-import * as Dialog from '@radix-ui/react-dialog'
-import { PlusCircle, X } from 'phosphor-react'
+import * as Dialog from "@radix-ui/react-dialog";
+import { PlusCircle, X } from "phosphor-react";
 import {
   DialogContent,
   DialogOverlay,
@@ -9,46 +9,48 @@ import {
   FieldLabel,
   Field,
   CloseAndSaveDialog,
-} from './MonitorModal.styles'
-import { useForm } from 'react-hook-form'
-import { useState } from 'react'
+} from "./MonitorModal.styles";
+import { useForm } from "react-hook-form";
+import { useState } from "react";
 
 interface FormDataType {
-  monitorName: string
+  monitorName: string;
 }
 
 interface OfflineType {
   offlineItem: {
-    color: string
-    customer: string
-    date: string
-    id: number
-    last_send_api: string
-    monitorado?: string
-    number: string
-    provider: string
-    qtde: number
-    timeoff: number
-  }
-  updateItem: (item: OfflineType) => void
+    status: string;
+    chatId: string;
+    color: string;
+    customer: string;
+    date: string;
+    id: number;
+    last_send_api: string;
+    monitorado?: string;
+    number: string;
+    provider: string;
+    qtde: number;
+    timeoff: number;
+  };
+  updateItem: (item: OfflineType) => void;
 }
 
 export function MonitorModal({ offlineItem, updateItem }: OfflineType) {
   const { register, handleSubmit, reset } = useForm<FormDataType>({
     defaultValues: {
-      monitorName: '',
+      monitorName: "",
     },
-  })
-  const [dialogOpen, setDialogOpen] = useState(false)
+  });
+  const [dialogOpen, setDialogOpen] = useState(false);
 
   function updateMonitor(data: FormDataType) {
-    offlineItem.monitorado = data.monitorName
+    offlineItem.monitorado = data.monitorName;
     updateItem({
       offlineItem,
       updateItem,
-    })
-    reset()
-    setDialogOpen(false)
+    });
+    reset();
+    setDialogOpen(false);
   }
 
   return (
@@ -60,7 +62,7 @@ export function MonitorModal({ offlineItem, updateItem }: OfflineType) {
         <DialogOverlay />
         <DialogContent>
           <DialogTitle>
-            Inserir Monitor{' '}
+            Inserir Monitor{" "}
             <DialogClose asChild>
               <X size={18} />
             </DialogClose>
@@ -72,7 +74,7 @@ export function MonitorModal({ offlineItem, updateItem }: OfflineType) {
               <Field
                 type="search"
                 id="monitorName"
-                {...register('monitorName')}
+                {...register("monitorName")}
               />
             </FieldContainer>
 
@@ -81,5 +83,5 @@ export function MonitorModal({ offlineItem, updateItem }: OfflineType) {
         </DialogContent>
       </Dialog.Portal>
     </Dialog.Root>
-  )
+  );
 }
